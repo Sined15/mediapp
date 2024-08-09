@@ -1,5 +1,6 @@
 package com.mediapp_backend.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,8 +11,13 @@ import com.mediapp_backend.service.PatientService;
 @RestController
 @RequestMapping("/patients")
 public class PatientController {
-  
-  private PatientService service = new PatientService();
+
+  //! 1ra forma
+  // private PatientService service = new PatientService();
+
+  //! 2da forma
+  @Autowired
+  private PatientService service;
 
   @GetMapping
   public String hello() {
@@ -20,5 +26,5 @@ public class PatientController {
     p.setName("Denis");
     return service.sayHello(p);
   }
-  
+
 }
