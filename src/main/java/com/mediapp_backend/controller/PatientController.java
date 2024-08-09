@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mediapp_backend.model.Patient;
 import com.mediapp_backend.service.PatientService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/patients")
+@RequiredArgsConstructor
 public class PatientController {
 
   //! 1ra forma
@@ -20,10 +23,13 @@ public class PatientController {
   // private PatientService service;
 
   //! 3ra forma
-  private PatientService service;
-  public PatientController (PatientService service) {
-    this.service = service;
-  }
+  // private PatientService service;
+  // public PatientController (PatientService service) {
+  //   this.service = service;
+  // }
+
+  //! 4ta forma
+  private final PatientService service;
 
   @GetMapping
   public String hello() {

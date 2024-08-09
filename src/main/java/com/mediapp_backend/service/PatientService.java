@@ -6,7 +6,10 @@ import org.springframework.stereotype.Service;
 import com.mediapp_backend.model.Patient;
 import com.mediapp_backend.repository.PatientRepo;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class PatientService {
   
   //! Formas de inyectar una dependencia
@@ -18,11 +21,14 @@ public class PatientService {
   // private PatientRepo repo;
 
   //! 3ra forma: usando ID por constructor
-  private PatientRepo repo;
-  public PatientService(PatientRepo repo) {
-    this.repo = repo;
-  }
+  // private PatientRepo repo;
+  // public PatientService(PatientRepo repo) {
+  //   this.repo = repo;
+  // }
 
+  //! 4ta forma: usando ID por anotacion de Lombok @RequiredArgsConstructor
+  private final PatientRepo repo;
+  
   public String sayHello(Patient p) {
     return repo.sayHello(p);
   }
